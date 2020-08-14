@@ -12,6 +12,7 @@
 build/
 *.apk
 gradle.properties
+/out
 
 /度丫丫
 /度米朵
