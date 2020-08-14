@@ -1,4 +1,9 @@
+package baidu
+
 import com.google.gson.Gson
+import common.Holder
+import common.Log
+import common.urlEncode
 import okhttp3.Request
 
 object Token {
@@ -17,7 +22,8 @@ object Token {
     private var accessToken: AccessToken? = null
 
     fun refresh() {
-        val tokenUrl = "$URL?grant_type=client_credentials&client_id=${urlEncode(appKey)}&client_secret=${urlEncode(secretKey)}"
+        val tokenUrl =
+            "$URL?grant_type=client_credentials&client_id=${appKey.urlEncode()}&client_secret=${secretKey.urlEncode()}"
         val request = Request.Builder().url(tokenUrl).build()
         val call = Holder.okhttp.newCall(request)
         val response = call.execute()
@@ -28,7 +34,10 @@ object Token {
                 accessToken = tt
             }
         } else {
-            Log.d("okhttp", "token refresh failed with code = ${response.code()}, message = ${response.body()?.string()}")
+            Log.d(
+                "okhttp",
+                "token refresh failed with code = ${response.code()}, message = ${response.body()?.string()}"
+            )
         }
     }
 
