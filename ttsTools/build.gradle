@@ -28,6 +28,9 @@ dependencies {
 
     //tencent sdk
     implementation("com.squareup.okhttp:okhttp:2.5.0")
+
+    //google tts sdk
+    implementation("com.google.cloud:google-cloud-texttospeech:0.80.0-beta")
 }
 
 compileKotlin {

@@ -2,10 +2,15 @@ package common
 
 import okhttp3.OkHttpClient
 import java.net.URLEncoder
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 fun String.urlEncode(): String {
     return URLEncoder.encode(this, "UTF-8")
+}
+
+fun String.base64Encode(): String {
+    return String(Base64.getEncoder().encode(this.toByteArray()))
 }
 
 object Holder {
